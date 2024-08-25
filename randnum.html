@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Number Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #ffffcc;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .input-boxes {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .input-fields {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin: 5px 0;
+      padding: 5px;
+      width: 100px;
+    }
+
+    .result-box {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #6cb3ff;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #f4efef;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #6cb3ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="input-boxes">
+      <div class="input-fields">
+        <input type="number" id="minValue" placeholder="Min Value">
+        <input type="number" id="maxValue" placeholder="Max Value">
+      </div>
+      <button onclick="generateRandomNumber()">Submit</button>
+    </div>
+    <div class="result-box" id="result">Random generated number is</div>
+  </div>
+
+  <script>
+    function generateRandomNumber() {
+      const min = parseInt(document.getElementById('minValue').value);
+      const max = parseInt(document.getElementById('maxValue').value);
+
+      if (!isNaN(min) && !isNaN(max) && min <= max) {
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        document.getElementById('result').textContent = randomNumber;
+      } else {
+        document.getElementById('result').textContent = 'Please enter valid numbers';
+      }
+    }
+  </script>
+
+</body>
+</html>
